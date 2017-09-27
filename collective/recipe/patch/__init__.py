@@ -115,7 +115,7 @@ class Recipe(object):
         cwd = os.getcwd()
         try:
             os.chdir(path)
-            p = Popen([self.binary, '-p0'],
+            p = Popen(self.binary.split(' ') + ['-p0'],
                       stdin=PIPE, stdout=PIPE, stderr=STDOUT,
                       close_fds=True)
             output = p.communicate(open(patch).read())[0]
